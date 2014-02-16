@@ -29,6 +29,14 @@ module.exports = function(grunt) {
 			}
 		},
 
+		jade: {
+			compile: {
+				files: {
+					'index.html': [ 'src/index.jade' ]
+				}
+			}
+		},
+
 		cssmin: {
 			compress: {
 				files: {
@@ -92,7 +100,8 @@ module.exports = function(grunt) {
 				'js/**',
 				'lib/**',
 				'images/**',
-				'plugin/**'
+				'plugin/**',
+				'src/**'
 			]
 		},
 
@@ -104,6 +113,10 @@ module.exports = function(grunt) {
 			theme: {
 				files: [ 'css/theme/source/*.scss', 'css/theme/template/*.scss' ],
 				tasks: 'themes'
+			},
+			jade: {
+				files: [ 'src/*.jade' ],
+				tasks: 'source'
 			}
 		}
 
@@ -117,6 +130,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 	grunt.loadNpmTasks( 'grunt-contrib-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	grunt.loadNpmTasks( 'grunt-contrib-jade' );
 	grunt.loadNpmTasks( 'grunt-zip' );
 
 	// Default task
@@ -124,6 +138,9 @@ module.exports = function(grunt) {
 
 	// Theme task
 	grunt.registerTask( 'themes', [ 'sass' ] );
+
+	// Source task
+	grunt.registerTask( 'source', [ 'jade' ]);
 
 	// Package presentation to archive
 	grunt.registerTask( 'package', [ 'default', 'zip' ] );

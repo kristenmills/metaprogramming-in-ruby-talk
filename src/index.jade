@@ -1,0 +1,65 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title reveal.js - The HTML Presentation Framework
+    meta(name='description', content='A framework for easily creating beautiful presentations using HTML')
+    meta(name='author', content='Hakim El Hattab')
+    meta(name='apple-mobile-web-app-capable', content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    link(rel='stylesheet', href='css/reveal.min.css')
+    link#theme(rel='stylesheet', href='css/theme/moon.css')
+    // For syntax highlighting
+    link(rel='stylesheet', href='lib/css/solarized-dark.css')
+    // If the query includes 'print-pdf', use the PDF print sheet
+    //if lt IE 9
+      script(src='lib/js/html5shiv.js')
+  body
+    .reveal
+      // Any section element inside of this container is displayed as a slide
+      .slides
+        section
+          h2 Metaprogramming in Ruby
+          h3 Kristen Mills
+        section
+          h2 What is Metaprogramming?
+
+         aside.notes
+            Metaprogramming is writing code that writes code.
+            Also awesome
+        section
+          section
+            h1 The Basics
+          section
+            h2 Symbols
+            ul
+              li Kind of like strings
+              li Immutable
+              li Not garbage collected
+          section
+            h2 Blocks
+            ul
+              li That do...end thing
+              ul
+                li or curly braces if on one line
+              li One of the 3 types of closures
+        section
+          h2 Defining Methods
+          ul
+            li def method_name(params)
+            li define_method(name, &block)
+            li define_singleton_method(name, &block)
+        section
+          h2 Instance Variables
+          ul
+            li instance_eval_set(name, value)
+            li instance_eval_get(name)
+        section(data-markdown="src/slides/attr_accessor.md",
+         data-separator="^\n\n\n",
+         data-vertical="^\n\n",
+         data-notes="^Note:",
+         data-charset="iso-8859-15")
+    script(src='lib/js/head.min.js')
+    script(src='js/reveal.min.js')
+    script(src='js/init.js')
