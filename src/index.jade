@@ -2,7 +2,7 @@ doctype html
 html(lang='en')
   head
     meta(charset='utf-8')
-    title reveal.js - The HTML Presentation Framework
+    title Metaprogramming in Ruby
     meta(name='description', content='A framework for easily creating beautiful presentations using HTML')
     meta(name='author', content='Hakim El Hattab')
     meta(name='apple-mobile-web-app-capable', content='yes')
@@ -21,7 +21,8 @@ html(lang='en')
       .slides
         section
           h2 Metaprogramming in Ruby
-          h3 Kristen Mills
+          p Created By 
+            a(href='http://kristen-mills.com') Kristen Mills
         section
           h2 What is Metaprogramming?
 
@@ -45,6 +46,24 @@ html(lang='en')
                 li or curly braces if on one line
               li One of the 3 types of closures
         section
+          section
+            h1 Monkey
+            h1 Patching
+          section(data-markdown="src/slides/monkey_patch.md",
+          data-separator="^\n\n\n",
+          data-vertical="^\n\n",
+          data-notes="^Note:",
+          data-charset="iso-8859-15")
+          section
+            h2 Refinements
+            ul
+              li Allows you to monkey patch in a given scope
+        section
+          h2 Aliasing method
+          ul
+            li alias method_1, method_2
+            li alias_method :method_1, :method_2
+        section
           h2 Defining Methods
           ul
             li def method_name(params)
@@ -53,13 +72,71 @@ html(lang='en')
         section
           h2 Instance Variables
           ul
-            li instance_eval_set(name, value)
-            li instance_eval_get(name)
+            li instance_variable_set(name, value)
+            li instance_variable_get(name)
         section(data-markdown="src/slides/attr_accessor.md",
-         data-separator="^\n\n\n",
-         data-vertical="^\n\n",
-         data-notes="^Note:",
-         data-charset="iso-8859-15")
+          data-separator="^\n\n\n",
+          data-vertical="^\n\n",
+          data-notes="^Note:",
+          data-charset="iso-8859-15")
+        section
+          section
+            h1 Eigenclasses!
+          section
+            h3 Wait, where does that method go?
+          section(data-markdown="src/slides/access_eigen.md",
+          data-separator="^\n\n\n",
+          data-vertical="^\n\n",
+          data-notes="^Note:",
+          data-charset="iso-8859-15")
+          section
+            h3 Before you ask
+            ul
+              li Yes, eigenclasses have Eigenclasses
+        section
+          h2 Calling Methods
+          ul
+            li send(name, *args)
+        section
+          h2 Removing Methods
+          ul
+            li remove_method(name)
+            li undef_method(name)
+        section
+          section
+            h1 Rails Black Magic
+            h3 (aka Method Missing)
+          section
+            h2 Method Missing
+            ul
+              li method_missing(method, *args, &block)
+        section
+          section
+            h1 Domain Specific Languages
+          section
+            h2 Evaluating Strings/Blocks
+            ul
+              li eval(string)
+              li instance_eval(string)
+              li instance_eval(&block)
+              li instance_exec(*args, &block)
+              li yield(*args)
+              li call(*args)
+          section(data-markdown="src/slides/finite.md",
+            data-separator="^\n\n\n",
+            data-vertical="^\n\n",
+            data-notes="^Note:",
+            data-charset="iso-8859-15")
+          section(data-markdown="src/slides/add_event.md",
+            data-separator="^\n\n\n",
+            data-vertical="^\n\n",
+            data-notes="^Note:",
+            data-charset="iso-8859-15")
+
+        section
+          h1 Any Questions?
+        section
+          h1 Thanks!
     script(src='lib/js/head.min.js')
     script(src='js/reveal.min.js')
     script(src='js/init.js')
